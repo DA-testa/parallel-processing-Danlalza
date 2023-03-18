@@ -5,26 +5,17 @@ def parallel_processing(n, m, data):
     output = []
     # TODO: write the function for simulating parallel tasks, 
     # create the output pairs
-    thr = list(range(n))  # create a list of thread ids
-    times = [0] * n  # initialize the finish time of each thread to 0
+    thr = list(range(n))  
+    times = [0] * n
+    
     for i in range(m):
     
         time = data[i]
-    """
-        # find the thread with the smallest finish time
+        # find the smallest finish time
         thr_id = min(thr, key=lambda x: times[x])
-        output.append((thr_id, times[thr_id]))  # assign the job to the thread
-        times[thr_id] += time  # update the finish time of the thread
-    """
-        min_thr_id = thr[0]
-        for j in range(1, n):
-            if times[thr[j]] < times[min_thr_id]:
-                min_thr_id = thr[j]
-        output.append((min_thr_id, times[min_thr_id]))  # assign the job to the thread
-        times[min_thr_id] += time  # update the finish time of the thread
-        thr.remove(min_thr_id)  # remove the thread from the list of available threads
-        thr.append(min_thr_id)
-        
+        output.append((thr_id, times[thr_id]))  # assign to the thread
+        times[thr_id] += time  # update the finish time
+
     return output
 
 def main():
