@@ -8,7 +8,9 @@ def parallel_processing(n, m, data):
     thr = list(range(n))  # create a list of thread ids
     times = [0] * n  # initialize the finish time of each thread to 0
     for i in range(m):
+    
         time = data[i]
+    """
         # find the thread with the smallest finish time
         thr_id = min(thr, key=lambda x: times[x])
         output.append((thr_id, times[thr_id]))  # assign the job to the thread
@@ -22,7 +24,7 @@ def parallel_processing(n, m, data):
         times[min_thr_id] += time  # update the finish time of the thread
         thr.remove(min_thr_id)  # remove the thread from the list of available threads
         thr.append(min_thr_id)
-        """
+        
     return output
 
 def main():
